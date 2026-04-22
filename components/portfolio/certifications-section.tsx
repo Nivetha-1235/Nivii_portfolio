@@ -11,7 +11,7 @@ const certifications = [
     date: 'Nov 2025',
     badge: 'SQL',
     icon: Database,
-    link: 'https://www.hackerrank.com',
+    link: 'https://www.hackerrank.com/certificates',
   },
   {
     name: 'SQL (Advanced)',
@@ -19,7 +19,7 @@ const certifications = [
     date: 'Nov 2025',
     badge: 'SQL',
     icon: Database,
-    link: 'https://www.hackerrank.com',
+    link: 'https://www.hackerrank.com/certificates',
   },
   {
     name: 'Hands-on SSMS, SQL Queries & Azure Data Studio',

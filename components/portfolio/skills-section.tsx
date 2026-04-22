@@ -28,6 +28,8 @@ const skillCategories = [
       { name: 'Azure Data Studio', level: 75 },
       { name: 'Power BI', level: 80 },
       { name: 'SSRS', level: 70 },
+      { name: 'SSIS', level: 70 },
+      { name: 'DAX', level: 70 },
     ],
   },
   {
@@ -40,6 +42,7 @@ const skillCategories = [
       { name: 'jQuery', level: 65 },
       { name: 'HTML5', level: 85 },
       { name: 'CSS3', level: 80 },
+      { name: 'PL/SQL', level: 60 },
     ],
   },
   {
@@ -51,6 +54,8 @@ const skillCategories = [
       { name: 'Bootstrap', level: 80 },
       { name: 'FlutterFlow', level: 65 },
       { name: 'Microsoft Power BI', level: 80 },
+      { name: 'Azure SQL', level: 70 },
+      { name: 'Power Query', level: 70 },
     ],
   },
   {
@@ -87,6 +92,11 @@ const skillIcons: Record<string, typeof Database> = {
   'Agile Workflow': Workflow,
   'Technical Documentation': FileText,
   'Cross-functional Collaboration': MessageSquare,
+  'SSIS': Workflow,
+  'DAX': BarChart3,
+  'PL/SQL': FileCode,
+  'Azure SQL': Server,
+  'Power Query': Workflow,
 }
 
 function SkillPill({ skill, delay }: { skill: { name: string; level: number }; delay: number }) {
@@ -131,25 +141,18 @@ export function SkillsSection() {
     <section id="skills" ref={sectionRef} className="py-24 md:py-32 relative overflow-hidden">
       {/* Floating Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(6)].map((_, i) => (
+        {FLOATING_SYMBOLS.map((sym, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0 }}
-            animate={isInView ? { 
+            animate={isInView ? {
               opacity: 0.1,
-              x: [0, Math.random() * 100 - 50, 0],
-              y: [0, Math.random() * 100 - 50, 0],
+              x: [0, sym.dx, 0],
+              y: [0, sym.dy, 0],
             } : {}}
-            transition={{ 
-              duration: 10 + Math.random() * 10, 
-              repeat: Infinity,
-              delay: i * 0.5 
-            }}
+            transition={{ duration: sym.dur, repeat: Infinity, delay: i * 0.5 }}
             className="absolute text-6xl text-primary"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
+            style={{ left: `${sym.left}%`, top: `${sym.top}%` }}
           >
             {['</', '{}', '()', '[]', '=>', '/*'][i]}
           </motion.div>
